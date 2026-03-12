@@ -1,4 +1,5 @@
-export function add() {
+export async function add() {
+    
     console.log("Adding a new file to the Repository...");
 }
 
