@@ -11,11 +11,26 @@ import revert from "./controllers/revert.js";
 
 yargs(hideBin(process.argv))
     .command('init','Initialize',  {},initrepo)
-    .command('add','Add a new file',  {},add)
-    .command('commit','Commit changes',  {},commit)
+    .command('add <file>','Add a new file', (yargs) => {
+        yargs.positional('file', {
+            describe: 'The file to add',
+            type: 'string'
+        });
+    },add)
+    .command('commit <message>','Commit changes', (yargs) => {
+        yargs.positional('message', {
+            describe: 'The commit message',
+            type: 'string'
+        });
+    },commit)
     .command('push','Push changes',  {},push)
     .command('pull','Pull changes',  {},pull)
-    .command('revert','Revert changes',  {},revert)
+    .command('revert <commitID>','Revert changes', (yargs) => {
+        yargs.positional('commitID', {
+            describe: 'The commit to revert',
+            type: 'string'
+        });
+    },revert)
     .demandCommand(1, 'You need at least one command before moving on')
     .help()
     .argv;
