@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "mongoose": "^9.3.0",
+    "uuid": "^13.0.0",
     "yargs": "^18.0.0"
   }
 }
