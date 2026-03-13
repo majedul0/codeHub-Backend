@@ -16,6 +16,7 @@ async function collectFilesRecursive(rootDir) {
         }
     }
 
+    
     return filePaths;
 }
 
