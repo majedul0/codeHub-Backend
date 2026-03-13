@@ -11,12 +11,14 @@ import revert from "./controllers/revert.js";
 
 yargs(hideBin(process.argv))
     .command('init','Initialize',  {},initrepo)
-    .command('add <file>','Add a new file', (yargs) => {
+    .command('add [file]','Add file(s) to staging area', (yargs) => {
         yargs.positional('file', {
-            describe: 'The file to add',
+            describe: 'The file or folder to add (omit to add all files)',
             type: 'string'
         });
-    },add)
+    },
+    (argv) => {        add(argv.file);
+    })
     .command('commit <message>','Commit changes', (yargs) => {
         yargs.positional('message', {
             describe: 'The commit message',
